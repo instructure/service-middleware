@@ -1,6 +1,6 @@
-export const CALL_SERVICE = Symbol('CALL_SERVICE')
+export const CALL_SERVICE = 'inst-redux-service-middleware-CALL_SERVICE'
 
-export default function serviceMiddleware (services) {
+function serviceMiddleware (services) {
   services = Object.assign(Object.create(null), services)
   return (store) => next => action => {
     if (action.type === CALL_SERVICE) {
@@ -21,3 +21,5 @@ export default function serviceMiddleware (services) {
 }
 
 serviceMiddleware.CALL_SERVICE = CALL_SERVICE
+
+export default serviceMiddleware

@@ -1,7 +1,9 @@
 module.exports = {
   entry: './src/serviceMiddleware.js',
   output: {
-    filename: './lib/serviceMiddleware.js'
+    filename: './lib/serviceMiddleware.js',
+    library: 'inst-redux-service-middleware',
+    libraryTarget: 'umd'
   },
   module: {
     loaders: [
