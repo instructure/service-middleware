@@ -2,21 +2,20 @@ export const CALL_SERVICE = 'inst-redux-service-middleware-CALL_SERVICE'
 
 function createServiceMiddleware (services) {
   services = Object.assign(Object.create(null), services)
+
   return (store) => next => action => {
-    if (action.type === CALL_SERVICE) {
-      const { service, method, args } = action.payload
-      const serviceObject = services[service]
-      if (!serviceObject) {
-        throw `service ${service} undefined`
-      }
-      if (!serviceObject[method]) {
-        throw `service method ${method} undefined`
-      }
-      const realArgs = args ? args.slice() : []
-      realArgs.push(store)
-      return serviceObject[method].apply(serviceObject, realArgs)
-    }
-    return next(action)
+    if (action.type !== CALL_SERVICE) return next(action)
+
+    const { service: serviceKey, method, args } = action.payload
+    const service = services[serviceKey]
+
+    if (!service) throw `service ${serviceKey} undefined`
+    if (!service[method]) throw `service method ${method} undefined`
+
+    const realArgs = args ? args.slice() : []
+    realArgs.push(store)
+
+    return service[method].apply(service, realArgs)
   }
 }
 
