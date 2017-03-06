@@ -3,7 +3,7 @@
   "version": "1.0.4",
   "description": "Service middleware for redux",
   "license": "UNLICENSED",
-  "main": "lib/serviceMiddleware.js",
+  "main": "lib/index.js",
   "scripts": {
     "clean": "rm -rf lib",
     "build": "webpack",

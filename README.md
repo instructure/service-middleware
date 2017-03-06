@@ -1,9 +1,12 @@
 1. While creating your store, register your services as key/value pairs
-   with the middleware:
+   with the service middleware constructor:
 
 ```
   applyMiddleware(
-    serviceMiddleware({ myKey: myService, myOtherKey: myOtherService })
+    createServiceMiddleware({
+      myKey: myService,
+      myOtherKey: myOtherService
+    })
   )
 ```
 

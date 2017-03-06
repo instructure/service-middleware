@@ -1,6 +1,6 @@
 export const CALL_SERVICE = 'inst-redux-service-middleware-CALL_SERVICE'
 
-function serviceMiddleware (services) {
+function createServiceMiddleware (services) {
   services = Object.assign(Object.create(null), services)
   return (store) => next => action => {
     if (action.type === CALL_SERVICE) {
@@ -20,6 +20,6 @@ function serviceMiddleware (services) {
   }
 }
 
-serviceMiddleware.CALL_SERVICE = CALL_SERVICE
+createServiceMiddleware.CALL_SERVICE = CALL_SERVICE
 
-export default serviceMiddleware
+export default createServiceMiddleware

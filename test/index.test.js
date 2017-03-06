@@ -1,8 +1,8 @@
 import { expect } from 'chai'
 import sinon from 'sinon'
-import serviceMiddleware, {CALL_SERVICE} from '../src/serviceMiddleware'
+import createServiceMiddleware, {CALL_SERVICE} from '../src/index'
 
-describe('serviceMiddleware', function () {
+describe('createServiceMiddleware', function () {
   const serviceAction = {
     type: CALL_SERVICE,
     payload: {
@@ -17,7 +17,7 @@ describe('serviceMiddleware', function () {
     service = {
       doSomething: sinon.stub().returns('didSomething'),
     }
-    middleware = serviceMiddleware({ myService: service })
+    middleware = createServiceMiddleware({ myService: service })
     store = {}
     next = sinon.stub().returns('didNext')
   })
