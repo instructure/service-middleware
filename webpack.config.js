@@ -1,3 +1,6 @@
+const { resolve } = require('path')
+const src = resolve(__dirname, 'src')
+
 module.exports = {
   entry: './src/index.js',
   output: {
@@ -6,14 +9,11 @@ module.exports = {
     libraryTarget: 'umd'
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js$/,
-        loader: 'babel-loader',
-        query: {
-          presets: ['es2015']
-        },
-        exclude: /node_modules/
+        include: src,
+        use: 'babel-loader'
       }
     ]
   }

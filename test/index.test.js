@@ -1,6 +1,6 @@
 import { expect } from 'chai'
 import sinon from 'sinon'
-import createServiceMiddleware, {CALL_SERVICE} from '../src/index'
+import createServiceMiddleware, { CALL_SERVICE } from '../lib/index'
 
 describe('createServiceMiddleware', function () {
   const serviceAction = {
