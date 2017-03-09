@@ -15,10 +15,12 @@ function createServiceMiddleware (services) {
     const realArgs = args ? args.slice() : []
     realArgs.push(store)
 
-    return service[method].apply(service, realArgs)
+    const response = service[method].apply(service, realArgs)
+    // Pass on this event after the service has done what the service wants w/ current state
+    next(action)
+    // Then return the service
+    return response
   }
 }
-
-createServiceMiddleware.CALL_SERVICE = CALL_SERVICE
 
 export default createServiceMiddleware

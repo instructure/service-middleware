@@ -27,7 +27,7 @@ describe('createServiceMiddleware', function () {
   it('calls service method for service action', () => {
     const result = dispatch(serviceAction)
     expect(result).to.equal('didSomething')
-    expect(next.called).to.be.false
+    expect(next.called).to.be.true
   })
 
   it('sends store with args', () => {
