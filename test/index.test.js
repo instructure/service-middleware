@@ -65,7 +65,7 @@ describe('createServiceMiddleware', function () {
       const result = dispatch(unrecognizedServiceAction)
       expect.fail('method should have thrown')
     } catch (e) {
-      expect(e).to.equal('service yourService undefined')
+      expect(e.message).to.equal('service yourService undefined')
     }
     expect(next.called).to.be.false
     expect(service.doSomething.called).to.be.false
@@ -85,7 +85,7 @@ describe('createServiceMiddleware', function () {
       const result = dispatch(unrecognizedServiceMethodAction)
       expect.fail('method should have thrown')
     } catch (e) {
-      expect(e).to.equal('service method doSomethingElse undefined')
+      expect(e.message).to.equal('service method doSomethingElse undefined')
     }
     expect(next.called).to.be.false
     expect(service.doSomething.called).to.be.false

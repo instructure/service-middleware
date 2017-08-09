@@ -9,8 +9,8 @@ function createServiceMiddleware (services) {
     const { service: serviceKey, method, args } = action.payload
     const service = services[serviceKey]
 
-    if (!service) throw `service ${serviceKey} undefined`
-    if (!service[method]) throw `service method ${method} undefined`
+    if (!service) throw new Error(`service ${serviceKey} undefined`)
+    if (!service[method]) throw new Error(`service method ${method} undefined`)
 
     const realArgs = args ? args.slice() : []
     realArgs.push(store)

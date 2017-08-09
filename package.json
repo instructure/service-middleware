@@ -1,6 +1,6 @@
 {
   "name": "inst-redux-service-middleware",
-  "version": "1.0.8",
+  "version": "2.0.0",
   "description": "Service middleware for redux",
   "license": "UNLICENSED",
   "main": "lib/index.js",
