@@ -1,7 +1,7 @@
 export const CALL_SERVICE = 'inst-redux-service-middleware-CALL_SERVICE'
 
-function createServiceMiddleware (services) {
-  services = Object.assign(Object.create(null), services)
+function createServiceMiddleware (origServices) {
+  const services = Object.assign(Object.create(null), origServices)
 
   return (store) => next => action => {
     if (action.type !== CALL_SERVICE) return next(action)
@@ -15,7 +15,7 @@ function createServiceMiddleware (services) {
     const realArgs = args ? args.slice() : []
     realArgs.push(store)
 
-    const response = service[method].apply(service, realArgs)
+    const response = service[method](...realArgs)
     // Pass on this event after the service has done what the service wants w/ current state
     next(action)
     // Then return the service
