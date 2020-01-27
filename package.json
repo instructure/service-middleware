@@ -1,24 +1,20 @@
 {
-  "name": "inst-redux-service-middleware",
-  "version": "2.0.0",
+  "name": "@instructure/redux-service-middleware",
+  "version": "1.0.0",
   "description": "Service middleware for redux",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "main": "lib/index.js",
   "scripts": {
     "clean": "rm -rf lib",
-    "build": "yarn run clean && webpack",
-    "test": "yarn run build && mocha --compilers js:babel-core/register",
-    "prepublish": "yarn run build"
+    "build": "babel src/index.js -d lib",
+    "test": "jest --coverage",
+    "prepublish": "yarn run clean && yarn run build"
   },
   "dependencies": {},
   "devDependencies": {
-    "babel-core": "~6.23.1",
-    "babel-loader": "~6.4.0",
-    "babel-preset-env": "~1.2.1",
-    "chai": "~3.5.0",
-    "mocha": "~3.2.0",
-    "sinon": "~1.17.7",
-    "sinon-chai": "~2.8.0",
-    "webpack": "~2.2.1"
+    "@babel/cli": "^7.8.3",
+    "@babel/core": "^7.8.3",
+    "@babel/preset-env": "^7.8.3",
+    "jest": "^25.1.0"
   }
 }
