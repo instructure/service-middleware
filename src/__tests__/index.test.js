@@ -1,4 +1,26 @@
-/* global jest, expect */
+/*
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2015 - present Instructure, Inc.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
 import createServiceMiddleware, { CALL_SERVICE } from '../index'
 
 /* eslint-disable no-console */
@@ -70,13 +92,7 @@ describe('createServiceMiddleware', () => {
         args: [1, 2]
       }
     }
-
-    try {
-      dispatch(unrecognizedServiceAction)
-      expect.fail('method should have thrown')
-    } catch (e) {
-      expect(e.message).toBe('service yourService undefined')
-    }
+    expect(() => dispatch(unrecognizedServiceAction)).toThrow('service yourService undefined')
     expect(next).not.toHaveBeenCalled()
     expect(service.doSomething).not.toHaveBeenCalled()
   })
@@ -91,12 +107,7 @@ describe('createServiceMiddleware', () => {
       }
     }
 
-    try {
-      dispatch(unrecognizedServiceMethodAction)
-      expect.fail('method should have thrown')
-    } catch (e) {
-      expect(e.message).toBe('service method doSomethingElse undefined')
-    }
+    expect(() => dispatch(unrecognizedServiceMethodAction)).toThrow('service method doSomethingElse undefined')
     expect(next).not.toHaveBeenCalled()
     expect(service.doSomething).not.toHaveBeenCalled()
   })

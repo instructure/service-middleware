@@ -5,16 +5,20 @@
   "license": "MIT",
   "main": "lib/index.js",
   "scripts": {
-    "clean": "rm -rf lib",
     "build": "babel src/index.js -d lib",
-    "test": "jest --coverage",
-    "prepublish": "yarn run clean && yarn run build"
+    "clean": "rm -rf lib/*",
+    "lint": "eslint .",
+    "prepublish": "yarn run clean && yarn run build",
+    "test": "jest --coverage"
   },
   "dependencies": {},
   "devDependencies": {
     "@babel/cli": "^7.8.3",
     "@babel/core": "^7.8.3",
     "@babel/preset-env": "^7.8.3",
+    "@instructure/ui-eslint-config": "^6.17.0",
+    "eslint": "^6.8.0",
+    "eslint-plugin-jest": "^23.6.0",
     "jest": "^25.1.0"
   }
 }
