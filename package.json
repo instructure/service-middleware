@@ -2,8 +2,13 @@
   "name": "@instructure/redux-service-middleware",
   "version": "1.0.0",
   "description": "Service middleware for redux",
+  "author": "Instructure, Inc. Engineering and Product Design",
   "license": "MIT",
-  "main": "lib/index.js",
+  "main": "./lib/index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideEffects": false,
   "scripts": {
     "build": "babel src/index.js -d lib",
     "clean": "rm -rf lib/*",
